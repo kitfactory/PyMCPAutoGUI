@@ -1,9 +1,21 @@
 {
     "mcpServers": {
         "PyMCPAutoGUI": {
-            "cwd": "${PYMCPAUTOGUI_INSTALL_DIR}",
-            "command": ".venv\\Scripts\\python.exe",
-            "args": ["src\\hello_mcp\\mcp_server.py"]
+            // English: Set the working directory. Use ${workspaceFolder} if running from the project root,
+            // or specify the directory where 'pymcpautogui' is installed if running globally.
+            // Japanese: 作業ディレクトリを設定します。プロジェクトルートから実行する場合は ${workspaceFolder} を使用し、
+            // グローバルに実行する場合は 'pymcpautogui' がインストールされているディレクトリを指定します。
+            "cwd": "${workspaceFolder}", // Or path to site-packages
+
+            // English: Command to run the server. Use 'python' if it's in PATH and the correct venv is active,
+            // or specify the full path to the Python executable in the virtual environment.
+            // Japanese: サーバーを実行するコマンド。PATH にあり、正しい仮想環境がアクティブな場合は 'python' を使用し、
+            // そうでない場合は仮想環境内の Python 実行可能ファイルへのフルパスを指定します。
+            "command": "python", // Or ".venv\\Scripts\\python.exe" or full path
+
+            // English: Arguments to run the server module.
+            // Japanese: サーバーモジュールを実行するための引数。
+            "args": ["-m", "pymcpautogui.server"]
         }
     }
 }
