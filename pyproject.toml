@@ -1,0 +1,26 @@
+[project]
+name = "pymcpautogui"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "pyautogui>=0.9.54",
+    "pygetwindow>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = [
+    "--import-mode=importlib",
+    "--cov=src", # srcディレクトリをカバレッジ対象に
+    "--cov-report=term-missing",
+]

@@ -1,0 +1,9 @@
+{
+    "mcpServers": {
+        "PyMCPAutoGUI": {
+            "cwd": "${PYMCPAUTOGUI_INSTALL_DIR}",
+            "command": ".venv\\Scripts\\python.exe",
+            "args": ["src\\hello_mcp\\mcp_server.py"]
+        }
+    }
+}
