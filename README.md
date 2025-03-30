@@ -67,16 +67,13 @@ Keep this terminal window open while you want the server to be available.
 
 You can easily connect PyMCPAutoGUI to the Cursor editor (@ symbol) for seamless GUI automation within your coding workflow.
 
-1.  **Open Cursor Settings:** Go to `File > Preferences > Settings` (or `Ctrl+,`).
-2.  **Search for MCP:** Search for "MCP".
-3.  **Edit `settings.json`:** Find the `cursor.mcpConfigs` setting and click "Edit in settings.json".
-4.  **Add PyMCPAutoGUI Configuration:** Add the following configuration to your `settings.json` file within the `cursor.mcpConfigs` object. Adapt the `cwd` and `command` paths if necessary (e.g., if not running Cursor from the project root or using a different Python path).
+1.  **Open MCP Configuration:** In Cursor, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and search for "MCP: Open mcp.json configuration file". Select it to open your `mcp.json` file.
+2.  **Add PyMCPAutoGUI Configuration:** Add or merge the following configuration into your `mcp.json` file. Adapt the `cwd` and `command` paths if necessary (e.g., if not running Cursor from the project root or using a different Python path).
 
     ```json
     {
-        // ... other settings ...
-        "cursor.mcpConfigs": {
-            // ... other MCP server configs ...
+        "mcpServers": {
+            // ... other MCP server configs if any ...
             "PyMCPAutoGUI": {
                 // English: Set the working directory. Use ${workspaceFolder} if running Cursor from the project root,
                 // or specify the directory where 'pymcpautogui' is installed if running globally.
@@ -94,14 +91,14 @@ You can easily connect PyMCPAutoGUI to the Cursor editor (@ symbol) for seamless
                 // Japanese: サーバーモジュールを実行するための引数。
                 "args": ["-m", "pymcpautogui.server"]
             }
-            // ... other MCP server configs ...
-        },
-        // ... other settings ...
+            // ... other MCP server configs if any ...
+        }
     }
     ```
+    *(Note: If your `mcp.json` already exists, merge the `"PyMCPAutoGUI": { ... }` block into the existing `mcpServers` object.)*
 
-5.  **Save `settings.json`**.
-6.  **Use in Cursor:** Now you can invoke the PyMCPAutoGUI tools directly in Cursor using the `@PyMCPAutoGUI` handle!
+3.  **Save `mcp.json`**. Cursor should automatically detect the changes and make the server available.
+4.  **Use in Cursor:** Now you can invoke the PyMCPAutoGUI tools directly in Cursor using the `@PyMCPAutoGUI` handle!
 
     *Example:*
     `@PyMCPAutoGUI move_to(x=100, y=200)`
@@ -109,7 +106,7 @@ You can easily connect PyMCPAutoGUI to the Cursor editor (@ symbol) for seamless
     `@PyMCPAutoGUI screenshot(filename='screenshot.png')`
     `@PyMCPAutoGUI activate_window(title='Calculator')`
 
-## 🛠️ Available Tools
+## ��️ Available Tools
 
 PyMCPAutoGUI exposes most functions from `pyautogui` and `pygetwindow` as MCP tools. Here are some examples:
 

@@ -67,16 +67,13 @@ INFO:     Uvicorn running on http://127.0.0.1:6789 (Press CTRL+C to quit)
 
 PyMCPAutoGUI を Cursor エディタ（@ シンボル）に簡単に接続して、コーディングワークフロー内でシームレスな GUI 自動化を実現できます。
 
-1.  **Cursor 設定を開く:** `File > Preferences > Settings` (または `Ctrl+,`) に移動します。
-2.  **MCP を検索:** "MCP" を検索します。
-3.  **`settings.json` を編集:** `cursor.mcpConfigs` 設定を見つけ、「Edit in settings.json」をクリックします。
-4.  **PyMCPAutoGUI 設定を追加:** `settings.json` ファイル内の `cursor.mcpConfigs` オブジェクトに以下の設定を追加します。必要に応じて `cwd` と `command` のパスを調整してください（例: Cursor をプロジェクトルートから実行していない場合や、異なる Python パスを使用している場合）。
+1.  **MCP 設定を開く:** Cursor でコマンドパレットを開き (`Ctrl+Shift+P` または `Cmd+Shift+P`)、「MCP: Open mcp.json configuration file」を検索して選択し、`mcp.json` ファイルを開きます。
+2.  **PyMCPAutoGUI 設定を追加:** 以下の設定を `mcp.json` ファイルに追加またはマージします。必要に応じて `cwd` と `command` のパスを調整してください（例: Cursor をプロジェクトルートから実行していない場合や、異なる Python パスを使用している場合）。
 
     ```json
     {
-        // ... その他の設定 ...
-        "cursor.mcpConfigs": {
-            // ... 他の MCP サーバー設定 ...
+        "mcpServers": {
+            // ... もしあれば他の MCP サーバー設定 ...
             "PyMCPAutoGUI": {
                 // 作業ディレクトリを設定します。プロジェクトルートからCursorを実行する場合は ${workspaceFolder} を使用し、
                 // グローバルに実行する場合は 'pymcpautogui' がインストールされているディレクトリを指定します。
@@ -89,14 +86,14 @@ PyMCPAutoGUI を Cursor エディタ（@ シンボル）に簡単に接続して
                 // サーバーモジュールを実行するための引数。
                 "args": ["-m", "pymcpautogui.server"]
             }
-            // ... 他の MCP サーバー設定 ...
-        },
-        // ... その他の設定 ...
+            // ... もしあれば他の MCP サーバー設定 ...
+        }
     }
     ```
+    *注意: `mcp.json` が既に存在する場合は、`"PyMCPAutoGUI": { ... }` ブロックを既存の `mcpServers` オブジェクトにマージしてください。*
 
-5.  **`settings.json` を保存します**。
-6.  **Cursor で使用:** これで `@PyMCPAutoGUI` ハンドルを使用して Cursor で直接 PyMCPAutoGUI ツールを呼び出すことができます！
+3.  **`mcp.json` を保存します**。Cursor は変更を自動的に検出し、サーバーを利用可能にするはずです。
+4.  **Cursor で使用:** これで `@PyMCPAutoGUI` ハンドルを使用して Cursor で直接 PyMCPAutoGUI ツールを呼び出すことができます！
 
     *例:*
     `@PyMCPAutoGUI move_to(x=100, y=200)`
