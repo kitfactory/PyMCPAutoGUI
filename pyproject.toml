@@ -1,6 +1,6 @@
 [project]
 name = "pymcpautogui"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -21,6 +21,6 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = [
     "--import-mode=importlib",
-    "--cov=src", # srcディレクトリをカバレッジ対象に
+    "--cov=pymcpautogui",
     "--cov-report=term-missing",
 ]

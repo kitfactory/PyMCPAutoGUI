@@ -2,31 +2,31 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Supercharge your AI Agent's capabilities!** ✨ PyMCPAutoGUI provides a bridge between your AI agents (like those in Cursor or other MCP-compatible environments) and your computer's graphical user interface (GUI). It allows your agent to see the screen, control the mouse and keyboard, and interact with windows, just like a human user!
+**Supercharge your AI Agent's capabilities!** ✨ PyMCPAutoGUI provides a bridge between your AI agents (like those in Cursor or other MCP-compatible environments) and your computer's graphical user interface (GUI). It allows your agent to see the screen 👁️, control the mouse 🖱️ and keyboard ⌨️, and interact with windows 🪟, just like a human user!
 
-Stop tedious manual GUI tasks and let your AI do the heavy lifting. Perfect for automating repetitive actions, testing GUIs, or building powerful AI assistants.
+Stop tedious manual GUI tasks and let your AI do the heavy lifting 💪. Perfect for automating repetitive actions, testing GUIs, or building powerful AI assistants 🤖.
 
-## 🤔 Why PyMCPAutoGUI?
+## 🤔 Why Choose PyMCPAutoGUI?
 
-*   **🤖 Empower Your Agents:** Give your AI agents the ability to interact directly with desktop applications.
-*   **✅ Simple Integration:** Works seamlessly with MCP-compatible clients like the Cursor editor.
-*   **🚀 Easy to Use:** Start the server with a simple command.
-*   **🖱️⌨️ Comprehensive Control:** Offers a wide range of GUI automation functions from [PyAutoGUI](https://pyautogui.readthedocs.io/en/latest/) and [PyGetWindow](https://pygetwindow.readthedocs.io/en/latest/).
-*   **🖼️ Screen Perception:** Includes tools for taking screenshots and locating images on the screen.
-*   **🪟 Window Management:** Control window position, size, state (minimize, maximize), and more.
-*   **💬 User Interaction:** Display alert, confirmation, and prompt boxes.
+*   **🤖 Empower Your Agents:** Give your AI agents the power to interact directly with desktop applications.
+*   **✅ Simple Integration:** Works seamlessly with MCP-compatible clients like the Cursor editor. It's plug and play!
+*   **🚀 Easy to Use:** Get started with a simple server command. Seriously, it's *that* easy.
+*   **🖱️⌨️ Comprehensive Control:** Offers a wide range of GUI automation functions from the battle-tested [PyAutoGUI](https://pyautogui.readthedocs.io/en/latest/) and [PyGetWindow](https://pygetwindow.readthedocs.io/en/latest/).
+*   **🖼️ Screen Perception:** Includes tools for taking screenshots and locating images on the screen – let your agent *see*!
+*   **🪟 Window Management:** Control window position, size, state (minimize, maximize), and more. Tidy up that desktop!
+*   **💬 User Interaction:** Display alert, confirmation, and prompt boxes to communicate with the user.
 
 ## 🛠️ Supported Environments
 
 *   **Operating Systems:** Windows, macOS, Linux (Requires appropriate dependencies for `pyautogui` on each OS)
-*   **Python:** 3.11+
+*   **Python:** 3.11+ 🐍
 *   **MCP Clients:** Cursor Editor, any client supporting the [Model Context Protocol (MCP)](https://microsoft.github.io/language-server-protocol/specifications/mcp/)
 
-## 🚀 Getting Started
+## 🚀 Getting Started - It's Super Easy!
 
-### 1. Installation
+### 1. Installation (Recommended: Use a Virtual Environment!)
 
-It's recommended to install PyMCPAutoGUI in a dedicated virtual environment.
+Using a virtual environment keeps your project dependencies tidy.
 
 ```bash
 # Create and activate a virtual environment (example using venv)
@@ -36,23 +36,23 @@ python -m venv .venv
 # macOS / Linux bash
 source .venv/bin/activate
 
-# Install using pip (assuming the package is published on PyPI)
-# Or install directly from the source directory if developing
-pip install pymcpautogui # Or pip install .
+# Install using pip (from PyPI or local source)
+# Make sure your virtual environment is active!
+pip install pymcpautogui # Or pip install . if installing from local source
 ```
 
-*(Note: `pyautogui` might have system dependencies like `scrot` on Linux for screenshots. Please refer to the `pyautogui` documentation for OS-specific installation requirements.)*
+*(Note: `pyautogui` might have system dependencies like `scrot` on Linux for screenshots. Please check the `pyautogui` documentation for OS-specific installation requirements.)*
 
 ### 2. Running the MCP Server
 
-Once installed, you can run the PyMCPAutoGUI server from your terminal:
+Once installed, simply run the server from your terminal:
 
 ```bash
-# Make sure your virtual environment is activated
+# Make sure your virtual environment is activated!
 python -m pymcpautogui.server
 ```
 
-The server will start and listen for incoming MCP connections (defaulting to port 6789). You should see output indicating the server is running.
+The server will start and listen for connections (defaulting to port 6789). Look for this output:
 
 ```
 INFO:     Started server process [XXXXX]
@@ -61,64 +61,58 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:6789 (Press CTRL+C to quit)
 ```
 
-Keep this terminal window open while you want the server to be available.
+Keep this terminal running while you need the GUI automation magic! ✨
 
-## ✨ Integration with Cursor Editor
+## ✨ Seamless Integration with Cursor Editor
 
-You can easily connect PyMCPAutoGUI to the Cursor editor (@ symbol) for seamless GUI automation within your coding workflow.
+Connect PyMCPAutoGUI to Cursor (@ symbol) for GUI automation directly within your coding workflow.
 
-1.  **Open MCP Configuration:** In Cursor, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and search for "MCP: Open mcp.json configuration file". Select it to open your `mcp.json` file.
-2.  **Add PyMCPAutoGUI Configuration:** Add or merge the following configuration into your `mcp.json` file. Adapt the `cwd` and `command` paths if necessary (e.g., if not running Cursor from the project root or using a different Python path).
+1.  **Open MCP Configuration:** In Cursor, use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and find "MCP: Open mcp.json configuration file".
+2.  **Add PyMCPAutoGUI Config:** Add or merge this configuration into your `mcp.json`. Adjust paths if needed (especially if Cursor isn't running from the project root).
 
     ```json
     {
         "mcpServers": {
             // ... other MCP server configs if any ...
             "PyMCPAutoGUI": {
-                // English: Set the working directory. Use ${workspaceFolder} if running Cursor from the project root,
-                // or specify the directory where 'pymcpautogui' is installed if running globally.
-                // Japanese: 作業ディレクトリを設定します。プロジェクトルートからCursorを実行する場合は ${workspaceFolder} を使用し、
-                // グローバルに実行する場合は 'pymcpautogui' がインストールされているディレクトリを指定します。
-                "cwd": "${workspaceFolder}", // Or path to site-packages or installation directory
+                // Sets the working directory. ${workspaceFolder} is usually correct.
+                "cwd": "${workspaceFolder}",
 
-                // English: Command to run the server. Use 'python' if it's in PATH and the correct venv is active,
-                // or specify the full path to the Python executable in the virtual environment.
-                // Japanese: サーバーを実行するコマンド。PATH にあり、正しい仮想環境がアクティブな場合は 'python' を使用し、
-                // そうでない場合は仮想環境内の Python 実行可能ファイルへのフルパスを指定します。
-                "command": "python", // Or ".venv\\Scripts\\python.exe" or full path
+                // Command to run Python. 'python' works if the venv is active in the terminal
+                // where Cursor was launched, or specify the full path.
+                "command": "python", // Or ".venv/Scripts/python.exe" (Win) or ".venv/bin/python" (Mac/Linux)
 
-                // English: Arguments to run the server module.
-                // Japanese: サーバーモジュールを実行するための引数。
+                // Arguments to start the server module.
                 "args": ["-m", "pymcpautogui.server"]
             }
             // ... other MCP server configs if any ...
         }
     }
     ```
-    *(Note: If your `mcp.json` already exists, merge the `"PyMCPAutoGUI": { ... }` block into the existing `mcpServers` object.)*
+    *(Tip: If `mcp.json` already exists, just add the `"PyMCPAutoGUI": { ... }` part inside the `mcpServers` object.)*
 
-3.  **Save `mcp.json`**. Cursor should automatically detect the changes and make the server available.
-4.  **Use in Cursor:** Now you can invoke the PyMCPAutoGUI tools directly in Cursor using the `@PyMCPAutoGUI` handle!
+3.  **Save `mcp.json`**. Cursor will detect the server.
+4.  **Automate!** Use `@PyMCPAutoGUI` in Cursor chats:
 
     *Example:*
     `@PyMCPAutoGUI move_to(x=100, y=200)`
-    `@PyMCPAutoGUI write(text='Hello from Cursor!', interval=0.1)`
-    `@PyMCPAutoGUI screenshot(filename='screenshot.png')`
-    `@PyMCPAutoGUI activate_window(title='Calculator')`
+    `@PyMCPAutoGUI write(text='Automating with AI! 🎉', interval=0.1)`
+    `@PyMCPAutoGUI screenshot(filename='current_screen.png')`
+    `@PyMCPAutoGUI activate_window(title='Notepad')`
 
-## ��️ Available Tools
+## 🧰 Available Tools
 
-PyMCPAutoGUI exposes most functions from `pyautogui` and `pygetwindow` as MCP tools. Here are some examples:
+PyMCPAutoGUI exposes most functions from `pyautogui` and `pygetwindow`. Examples include:
 
-*   **Mouse:** `move_to`, `click`, `move_rel`, `drag_to`, `drag_rel`, `scroll`, `mouse_down`, `mouse_up`, `get_position`
-*   **Keyboard:** `write`, `press`, `key_down`, `key_up`, `hotkey`
-*   **Screenshots:** `screenshot`, `locate_on_screen`, `locate_center_on_screen`
-*   **Windows:** `get_all_titles`, `get_windows_with_title`, `get_active_window`, `activate_window`, `minimize_window`, `maximize_window`, `restore_window`, `move_window`, `resize_window`, `close_window`
-*   **Dialogs:** `alert`, `confirm`, `prompt`, `password`
-*   **Config:** `set_pause`, `set_failsafe`
+*   **Mouse 🖱️:** `move_to`, `click`, `move_rel`, `drag_to`, `drag_rel`, `scroll`, `mouse_down`, `mouse_up`, `get_position`
+*   **Keyboard ⌨️:** `write`, `press`, `key_down`, `key_up`, `hotkey`
+*   **Screenshots 🖼️:** `screenshot`, `locate_on_screen`, `locate_center_on_screen`
+*   **Windows 🪟:** `get_all_titles`, `get_windows_with_title`, `get_active_window`, `activate_window`, `minimize_window`, `maximize_window`, `restore_window`, `move_window`, `resize_window`, `close_window`
+*   **Dialogs 💬:** `alert`, `confirm`, `prompt`, `password`
+*   **Config ⚙️:** `set_pause`, `set_failsafe`
 
-Refer to the `src/pymcpautogui/server.py` file or use `@PyMCPAutoGUI list_tools` (if supported by the client) for a full list and function signatures.
+For the full list and details, check the `pymcpautogui/server.py` file or use `@PyMCPAutoGUI list_tools` in your MCP client.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Happy Automating! 😄
